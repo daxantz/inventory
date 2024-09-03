@@ -30,10 +30,16 @@ async function getAllPublishers() {
   return rows;
 }
 
+async function getAllManga() {
+  const { rows } = await pool.query("SELECT * FROM manga");
+  return rows;
+}
+
 module.exports = {
   insertManga,
   insertAuthor,
   insertPublisher,
   getAllAuthors,
   getAllPublishers,
+  getAllManga,
 };
