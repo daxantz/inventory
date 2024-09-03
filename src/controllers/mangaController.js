@@ -4,7 +4,12 @@ exports.mangaCreateGet = async (req, res) => {
   console.log(req.body);
   const authors = await db.getAllAuthors();
   const publishers = await db.getAllPublishers();
-  res.render("mangaCreateForm", { authors: authors, publishers: publishers });
+  const genres = await db.getGenres();
+  res.render("mangaCreateForm", {
+    authors: authors,
+    publishers: publishers,
+    genres: genres,
+  });
 };
 
 exports.mangaCreatePost = async (req, res) => {
@@ -12,8 +17,8 @@ exports.mangaCreatePost = async (req, res) => {
 
   // add to database
   try {
-    const { title, release_date, publisher, author } = req.body;
-    await db.insertManga(title, release_date, publisher, author);
+    const { title, release_date, publisher, author, genre } = req.body;
+    await db.insertManga(title, release_date, publisher, author, genre);
     res.redirect("/");
   } catch (error) {
     console.log(error);
