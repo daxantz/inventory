@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manga Manager</title>
+  </head>
+  <body>
+    <%-include('navbar', {links: links}) %>
+    <h2>Welcome to Manga Manager</h2>
+    <div>
+      <% manga.forEach((manga)=>{ %>
+      <div class="manga_card">
+        <h3><%= manga.title %></h3>
+        <p><%= manga.release_date %></p>
+        <p><%= manga.author_name %></p>
+        <p><%= manga.publisher_name %></p>
+      </div>
+
+      <%})%>
+    </div>
+  </body>
+</html>
