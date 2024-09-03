@@ -33,3 +33,17 @@ exports.mangaListGet = async (req, res) => {
     console.log(error);
   }
 };
+
+exports.mangaGet = async (req, res) => {
+  console.log(req.params.id);
+  try {
+    const itemId = req.params.id;
+    const mangaId = parseInt(itemId);
+
+    const manga = await db.getManga(mangaId);
+
+    res.render("mangaDetailsPage", { manga: manga });
+  } catch (error) {
+    console.log(error);
+  }
+};
