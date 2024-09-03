@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create manga entry</title>
+  </head>
+  <body>
+    <h1>Manga</h1>
+    <p>Fill in the form to add a manga entry</p>
+
+    <form action="/manga" method="post">
+      <label for="title">
+        Title:
+        <input id="title" name="title" type="text" />
+      </label>
+      <label for="release_date">
+        Release Date:
+        <input id="release_date" name="release_date" type="date" />
+      </label>
+      <label for="publisher">
+        Publisher:
+        <select name="publisher" id="publisher">
+          <% publishers.forEach(publisher => { %>
+          <option value="<%= publisher.id %>"><%= publisher.name %></option>
+          <% }) %>
+        </select>
+      </label>
+      <label for="author">
+        Author:
+        <select name="author" id="author">
+          <% authors.forEach(author => { %>
+          <option value="<%= author.id %>">
+            <%= author.first_name %> <%= author.last_name %>
+          </option>
+          <% }) %>
+        </select>
+      </label>
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
