@@ -19,3 +19,12 @@ exports.mangaCreatePost = async (req, res) => {
     console.log(error);
   }
 };
+
+exports.mangaListGet = async (req, res) => {
+  try {
+    const allManga = await db.getAllManga();
+    res.render("showManga", { manga: allManga });
+  } catch (error) {
+    console.log(error);
+  }
+};
