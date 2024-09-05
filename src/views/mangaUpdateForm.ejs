@@ -7,8 +7,8 @@
 </head>
 <body>
   <h1>Update Manga</h1>
-  <form action="/manga/<%= manga.id %>" method="post">
-    <input type="hidden" name="_method" value="PUT"> <!-- Method Override -->
+  <form action="/manga/<%=manga.id%>/?_method=PATCH" method="post">
+    <!-- <input type="hidden" name="_method" value="PATCH"> Method Override -->
     <label for="title">Title:</label>
     <input type="text" id="title" name="title" value="<%= manga.title %>">
     
@@ -30,6 +30,11 @@
     </select>
     
     <button type="submit">Update</button>
+  </form>
+  <form action="/manga/<%= manga.id%>/?_method=DELETE" method="post">
+    <!-- <input type="hidden" name="_method" value="DELETE" /> -->
+    <!-- Method Override -->
+    <button type="submit">Delete</button>
   </form>
 </body>
 </html>
