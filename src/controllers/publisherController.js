@@ -1,7 +1,7 @@
 const db = require("../db/queries");
-
+const data = require("../data");
 exports.publisherCreateGet = (req, res) => {
-  res.render("publisherCreateForm");
+  res.render("publisherCreateForm", { links: data.links });
 };
 
 exports.publisherCreatePost = async (req, res) => {
@@ -13,6 +13,15 @@ exports.publisherCreatePost = async (req, res) => {
 
     await db.insertPublisher(name, date_established);
     res.redirect("/");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.publisherListGet = async (req, res) => {
+  try {
+    const publishers = await db.getAllPublishers();
+    res.render("allPublishers", { publishers: publishers, links: data.links });
   } catch (error) {
     console.log(error);
   }
