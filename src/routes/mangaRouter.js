@@ -7,7 +7,7 @@ mangaRouter.get("/manga/:id", mangaController.mangaGet); // get specific manga
 mangaRouter.get("/add-manga", mangaController.mangaCreateGet); //get the manga creation form
 mangaRouter.post("/manga", mangaController.mangaCreatePost); // create a new manga entry
 mangaRouter.get("/manga/:id/edit", mangaController.updateFormGet); // update a single manga
-mangaRouter.post("/manga/:id", mangaController.mangaUpdatePut); // update a single manga
-// mangaRouter.delete("/manga/:id", mangaController.mangaDelete); // delete a single manga
+mangaRouter.patch("/manga/:id", mangaController.mangaUpdatePut); // update a single manga
+mangaRouter.delete("/manga/:id", mangaController.mangaDelete); // delete a single manga
 
 module.exports = mangaRouter;
