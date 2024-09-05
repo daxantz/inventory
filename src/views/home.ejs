@@ -10,14 +10,17 @@
     <h2>Welcome to Manga Manager</h2>
     <div>
       <% manga.forEach((manga)=>{ %>
-      <div class="manga_card">
-        <h3><%= manga.title %></h3>
-        <p><%= manga.release_date %></p>
-        <p><%= manga.author_name %></p>
-        <p><%= manga.publisher_name %></p>
-      </div>
+      <a href="/manga/<%= manga.id %>">
+        <div class="manga_card">
+          <h3><%= manga.title %></h3>
+          <p><%= manga.release_date %></p>
+          <p><%= manga.author_name %></p>
+          <p><%= manga.publisher_name %></p>
+        </div>
+      </a>
 
       <%})%>
     </div>
+    <button><a href="/add-manga">Add manga</a></button>
   </body>
 </html>
