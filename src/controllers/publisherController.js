@@ -33,8 +33,10 @@ exports.publisherGet = async (req, res) => {
     console.log(id);
     const idNum = Number(id);
     const publisher = await db.getPublisher(idNum);
+    const manga = await db.getPublisherManga(idNum);
+    console.log(manga);
 
-    res.render("publisherDetails", { publisher: publisher });
+    res.render("publisherDetails", { publisher: publisher, manga: manga });
   } catch (error) {
     console.log(error);
   }
