@@ -7,6 +7,16 @@
   </head>
   <body>
     <h1><%= publisher.name%></h1>
-    <div></div>
+    <div>
+      <% manga.forEach((manga)=>{ %>
+      <a href="/manga/<%= manga.id %>">
+        <div class="manga_card">
+          <h3><%= manga.title %></h3>
+          <p><%= manga.release_date %></p>
+        </div>
+      </a>
+
+      <%})%>
+    </div>
   </body>
 </html>
