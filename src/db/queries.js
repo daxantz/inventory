@@ -82,6 +82,15 @@ async function getPublisher(id) {
   return result.rows[0];
 }
 
+async function getPublisherManga(id) {
+  const result = await pool.query(
+    `SELECT * from manga WHERE publisher_id = $1
+    `,
+    [id]
+  );
+  return result.rows;
+}
+
 module.exports = {
   insertManga,
   insertAuthor,
@@ -95,4 +104,5 @@ module.exports = {
   updateManga,
   deleteManga,
   getPublisher,
+  getPublisherManga,
 };
