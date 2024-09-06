@@ -74,6 +74,14 @@ async function deleteManga(id) {
   await pool.query(`DELETE FROM manga WHERE id = $1`, [id]);
   console.log(`the manga with the id:${id} has been deleted`);
 }
+
+async function getPublisher(id) {
+  const result = await pool.query("SELECT * FROM publisher WHERE id = $1", [
+    id,
+  ]);
+  return result.rows[0];
+}
+
 module.exports = {
   insertManga,
   insertAuthor,
@@ -86,4 +94,5 @@ module.exports = {
   getFullMangaDetails,
   updateManga,
   deleteManga,
+  getPublisher,
 };
