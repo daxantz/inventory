@@ -26,3 +26,16 @@ exports.publisherListGet = async (req, res) => {
     console.log(error);
   }
 };
+
+exports.publisherGet = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const idNum = Number(id);
+    const publisher = await db.getPublisher(idNum);
+
+    res.render("publisherDetails", { publisher: publisher });
+  } catch (error) {
+    console.log(error);
+  }
+};
