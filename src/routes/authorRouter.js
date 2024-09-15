@@ -2,8 +2,8 @@ const { Router } = require("express");
 const authorController = require("../controllers/authorController"); // insert path to author controller
 const authorRouter = Router();
 
-// authorRouter.get("/", authorController.authorListGet); // get all author
-// authorRouter.get("/author/:id", authorController.authorGet); // get specific author
+authorRouter.get("/authors", authorController.authorListGet); // get all author
+authorRouter.get("/authors/:id", authorController.authorGet); // get specific author
 authorRouter.get("/author", authorController.authorCreateGet); //get the author creation form
 authorRouter.post("/author", authorController.authorCreatePost); // create a new author entry
 // authorRouter.put("/author/:id", authorController.authorUpdatePut); // update a single author
