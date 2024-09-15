@@ -1,7 +1,7 @@
 const db = require("../db/queries");
-
+const data = require("../data.js");
 exports.authorCreateGet = (req, res) => {
-  res.render("authorCreateForm");
+  res.render("authorCreateForm", { links: data.links });
 };
 
 exports.authorCreatePost = async (req, res) => {
