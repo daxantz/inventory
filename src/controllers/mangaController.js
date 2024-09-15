@@ -43,9 +43,14 @@ exports.mangaGet = async (req, res) => {
 
     const manga = await db.getManga(mangaId);
 
+    if (!manga) {
+      res.status(404).send("manga not found");
+    }
+
     res.render("mangaDetailsPage", { manga: manga, links: data.links });
   } catch (error) {
     console.log(error);
+    res.status(500).send("Server Error");
   }
 };
 
@@ -68,10 +73,21 @@ exports.mangaUpdatePut = async (req, res) => {
   try {
     const { id } = req.params;
     const data = req.body;
-    const allManga = await db.getAllManga();
+
     console.log("the data", data);
     await db.updateManga(Number(id), data);
     res.redirect(`/manga/${id}`);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.mangaDelete = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await db.deleteManga(Number(id));
+    console.log(`manga with the id: ${id} has been deleted`);
+    res.redirect("/");
   } catch (error) {
     console.log(error);
   }
