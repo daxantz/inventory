@@ -1,8 +1,8 @@
 const links = [
   { href: "/", text: "Home" },
-  { href: "/author", text: "Author" },
+  { href: "/authors", text: "Authors" },
   { href: "/manga", text: "Manga" },
-  { href: "/publisher", text: "Publisher" },
+  { href: "/publishers", text: "Publishers" },
 ];
 
 module.exports = {
