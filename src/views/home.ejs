@@ -4,23 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Manga Manager</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
   </head>
   <body>
     <%-include('navbar', {links: links}) %>
-    <h2>Welcome to Manga Manager</h2>
-    <div>
-      <% manga.forEach((manga)=>{ %>
-      <a href="/manga/<%= manga.id %>">
-        <div class="manga_card">
-          <h3><%= manga.title %></h3>
-          <p><%= manga.release_date %></p>
-          <p><%= manga.author_name %></p>
-          <p><%= manga.publisher_name %></p>
-        </div>
-      </a>
 
-      <%})%>
+    <div class="container">
+      <h2 class="text-center my-5">Welcome to Manga Manager</h2>
+      <div class="row text-center column-gap-4">
+        <div class="col border border-black bg-success py-5">
+          <a class="text-decoration-none text-white" href="/manga"
+            >View Manga</a
+          >
+        </div>
+        <div class="col border border-black bg-primary py-5">
+          <a class="text-white text-decoration-none" href="/authors"
+            >View Authors</a
+          >
+        </div>
+        <div class="col border border-black bg-danger py-5">
+          <a class="text-white text-decoration-none" href="/publishers"
+            >View Publishers</a
+          >
+        </div>
+      </div>
     </div>
-    <button><a href="/add-manga">Add manga</a></button>
   </body>
 </html>
