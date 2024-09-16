@@ -10,46 +10,72 @@
   </head>
   <body>
     <%-include('navbar', {links: links}) %>
-    <h1>Manga</h1>
-    <p>Fill in the form to add a manga entry</p>
 
-    <form action="/manga" method="post">
-      <label for="title">
-        Title:
-        <input id="title" name="title" type="text" />
-      </label>
-      <label for="release_date">
-        Release Date:
-        <input id="release_date" name="release_date" type="date" />
-      </label>
-      <label for="publisher">
-        Publisher:
-        <select name="publisher" id="publisher">
-          <% publishers.forEach(publisher => { %>
-          <option value="<%= publisher.id %>"><%= publisher.name %></option>
-          <% }) %>
-        </select>
-      </label>
-      <label for="author">
-        Author:
-        <select name="author" id="author">
-          <% authors.forEach(author => { %>
-          <option value="<%= author.id %>">
-            <%= author.first_name %> <%= author.last_name %>
-          </option>
-          <% }) %>
-        </select>
-      </label>
-      <label for="genre">
-        Genre:
-        <select name="genre" id="genre">
-          <% genres.forEach(genre => { %>
-          <option value="<%= genre.id %>"><%= genre.type %></option>
-          <% }) %>
-        </select>
-      </label>
+    <div class="container">
+      <div class="text-center my-3">
+        <h1>Create a manga entry</h1>
+        <p>Fill in the form to add a manga entry</p>
+      </div>
 
-      <button type="submit">Submit</button>
-    </form>
+      <form
+        style="max-width: 50%; margin: 0 auto"
+        class="border p-4"
+        action="/manga"
+        method="post"
+      >
+        <div class="mb-3">
+          <label class="form-label" for="title"> Title: </label>
+          <input class="form-control" id="title" name="title" type="text" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="release_date"> Release Date </label>
+          <input
+            class="form-control"
+            id="release_date"
+            name="release_date"
+            type="date"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="publisher"> Publisher </label>
+          <select
+            class="form-select form-select-sm"
+            aria-label="Default select example"
+            name="publisher"
+          >
+            <% publishers.forEach(publisher => { %>
+            <option value="<%= publisher.id %>"><%= publisher.name %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="author"> Author: </label>
+          <select
+            class="form-control form-select form-select-sm"
+            name="author"
+            id="author"
+          >
+            <% authors.forEach(author => { %>
+            <option value="<%= author.id %>">
+              <%= author.first_name %> <%= author.last_name %>
+            </option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="genre"> Genre: </label>
+          <select
+            class="form-control form-select form-select-sm"
+            name="genre"
+            id="genre"
+          >
+            <% genres.forEach(genre => { %>
+            <option value="<%= genre.id %>"><%= genre.type %></option>
+            <% }) %>
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
   </body>
 </html>
